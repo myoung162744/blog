@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Interactive Blog Platform
 
-## Getting Started
+A Next.js blog with a unique content/presentation separation architecture that enables rich, interactive blog posts while keeping content in clean markdown files.
 
-First, run the development server:
+## 🚀 Getting Started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the blog.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Architecture
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Content/Presentation Separation
 
-## Learn More
+This blog separates content from presentation:
 
-To learn more about Next.js, take a look at the following resources:
+- **Content** lives in markdown files (`src/content/posts/*.md`)
+- **Presentation** is handled by React components (`src/components/post-types/*`)
+- **Factory Pattern** routes posts to appropriate components based on type
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Directory Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/                    # Next.js 13+ app directory
+│   ├── blog/
+│   │   └── [slug]/        # Dynamic blog post routes
+│   └── page.tsx           # Homepage
+├── components/
+│   ├── core/              # Core components
+│   │   ├── post-factory.tsx
+│   │   └── post-base.tsx
+│   └── post-types/        # Custom post components
+│       └── multiple-choice-post.tsx
+├── content/
+│   └── posts/             # Markdown blog posts
+├── lib/
+│   └── content-loader.ts  # Markdown parsing
+└── types/
+    └── blog.ts            # TypeScript types
+```
 
-## Deploy on Vercel
+## ✍️ Writing Blog Posts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Create a markdown file in `src/content/posts/` with frontmatter:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```markdown
+---
+title: "Your Post Title"
+description: "Brief description"
+date: "2024-03-20"
+author: "Your Name"
+readTime: "5 min read"
+type: "multiple-choice"
+featured: true
+tags: ["education", "interactive"]
+---
+
+# Your content here...
+```
+
+## 🎨 Post Types
+
+### Multiple Choice Posts
+
+Interactive posts that start with a multiple choice question:
+
+```markdown
+---
+type: "multiple-choice"
+---
+
+# Interactive Setup
+
+## Question
+What's your question?
+
+## Options
+1. First option
+2. Second option
+3. Third option
+4. Fourth option
+
+## Follow-up
+- **Question**: "Follow-up question?"
+- **Subheading**: "Thought-provoking subtitle"
+- **Description**: "Context about the question"
+
+---
+
+# Main Content
+
+Your blog post content...
+```
+
+## 🔧 Adding New Post Types
+
+1. Define the type in `src/types/blog.ts`
+2. Create a component in `src/components/post-types/`
+3. Add to PostFactory in `src/components/core/post-factory.tsx`
+4. Add parsing logic to `src/lib/content-loader.ts`
+5. Document the content structure
+
+## 🎯 Design Principles
+
+- **Clean Separation**: Content authors work in markdown
+- **Type Safety**: Full TypeScript support
+- **Consistent Design**: White cards, black borders, proper contrast
+- **Interactive**: Each post type can have unique behaviors
+- **Accessible**: High contrast, semantic HTML, keyboard support
+
+## 📝 License
+
+MIT
