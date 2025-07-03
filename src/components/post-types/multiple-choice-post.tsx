@@ -51,7 +51,7 @@ export default function MultipleChoicePost({ post, onComplete }: MultipleChoiceP
                       : 'bg-white border-gray-300 hover:border-gray-500'
                   }`}
                 >
-                  <span className="font-mono font-bold mr-3 text-gray-900">{index + 1}.</span> {option}
+                  <span className="font-mono font-bold mr-3 text-gray-900">{String.fromCharCode(65 + index)}.</span> {option}
                 </button>
               ))}
             </div>
@@ -90,11 +90,14 @@ export default function MultipleChoicePost({ post, onComplete }: MultipleChoiceP
                 {/* Question Recap */}
                 <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-8">
                   <p className="font-mono text-sm mb-3 text-gray-900 font-semibold">{post.question}</p>
-                  <ol className="list-decimal list-inside space-y-1 text-sm text-gray-900 font-mono">
+                  <div className="space-y-1 text-sm text-gray-900 font-mono">
                     {post.options.map((option, index) => (
-                      <li key={index}>{option}</li>
+                      <div key={index} className="flex">
+                        <span className="font-bold mr-2">{String.fromCharCode(65 + index)}.</span>
+                        <span>{option}</span>
+                      </div>
                     ))}
-                  </ol>
+                  </div>
                 </div>
 
                 <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: post.mainContent }} />

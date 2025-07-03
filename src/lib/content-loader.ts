@@ -65,7 +65,7 @@ function parseMultipleChoicePost(metadata: PostMetadata, content: string): Multi
   
   // Parse interactive setup section
   const questionMatch = interactiveSection.match(/## Question\s*\n(.+)/);
-  const optionsMatch = interactiveSection.match(/## Options\s*\n((?:\d+\..+\n?)+)/);
+  const optionsMatch = interactiveSection.match(/## Options\s*\n((?:[A-Z]+\..+\n?)+)/);
   const followUpMatch = interactiveSection.match(/## Follow-up\s*\n((?:- \*\*.+?\*\*:.+\n?)+)/);
   
   if (!questionMatch || !optionsMatch || !followUpMatch) {
@@ -76,7 +76,7 @@ function parseMultipleChoicePost(metadata: PostMetadata, content: string): Multi
   const options = optionsMatch[1]
     .split('\n')
     .filter(line => line.trim())
-    .map(line => line.replace(/^\d+\.\s*/, '').trim());
+    .map(line => line.replace(/^[A-Z]+\.\s*/, '').trim());
   
   // Parse follow-up content
   const followUpLines = followUpMatch[1].split('\n').filter(line => line.trim());
