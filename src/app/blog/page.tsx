@@ -7,7 +7,7 @@ export default function BlogIndex() {
   return (
     <div className="min-h-screen bg-slate-100 py-12 px-4">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-gray-900">Blog Posts</h1>
+        <h1 className="text-4xl font-bold mb-8 text-gray-900">Chalk and Code</h1>
         
         {posts.length === 0 ? (
           <p className="text-gray-700">No posts found. Add some markdown files to get started!</p>

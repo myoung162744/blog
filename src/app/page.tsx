@@ -11,7 +11,7 @@ export default function Home() {
     return (
       <div className="min-h-screen bg-slate-100 py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">My Blog</h1>
+          <h1 className="text-5xl font-bold text-gray-900 mb-4">Chalk and Code</h1>
           <p className="text-xl text-gray-700">No posts found. Add some markdown files to get started!</p>
         </div>
       </div>
@@ -23,7 +23,7 @@ export default function Home() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">My Blog</h1>
+          <h1 className="text-5xl font-bold text-gray-900 mb-4">Chalk and Code</h1>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto">
             Exploring ideas about education, technology, and the future of learning through interactive content.
           </p>

@@ -1,7 +1,7 @@
 ---
 title: "E. None of the Above"
 description: "An interactive blog post with multiple choice questions that explores how we can better prepare students for real-world decision making."
-date: "2024-03-20"
+date: "2025-07-13"
 author: "Matthew Young"
 readTime: "5 min read"
 type: "multiple-choice"
