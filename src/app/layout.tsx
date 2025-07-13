@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Chalk and Code",
-  description: "Exploring ideas about education, technology, and the future of learning through interactive content.",
+      description: "Exploring ideas about education, technology, and the future of learning.",
 };
 
 export default function RootLayout({

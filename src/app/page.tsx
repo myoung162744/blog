@@ -25,7 +25,7 @@ export default function Home() {
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-gray-900 mb-4">Chalk and Code</h1>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-            Exploring ideas about education, technology, and the future of learning through interactive content.
+            Exploring ideas about education, technology, and the future of learning.
           </p>
         </div>
 
