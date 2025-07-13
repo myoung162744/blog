@@ -28,7 +28,7 @@ D. Stay local for core team but hire remote specialists for specific skills you 
 
 ---
 
-# This is what a real question looks like.
+# Real Questions Aren't Multiple Choice
 
 To prepare kids for the real world, we simplify it. We teach them hard skills that we hope will help them tackle real problems. While hard skills are measurable and important, I believe we've gone too far. We favor teaching hard skills because they're easy to evaluate, but as the world changes, this approach becomes increasingly problematic. 
 
