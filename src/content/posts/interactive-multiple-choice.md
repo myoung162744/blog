@@ -30,30 +30,27 @@ D. Stay local for core team but hire remote specialists for specific skills you 
 
 # This is what a real question looks like.
 
-Yet, to prepare kids for this we simplify the world. Tell them we know all the answers. That's what school teaches you: the answers.
+To prepare kids for the real world, we simplify it. We teach them hard skills that we hope will help them tackle real problems. While hard skills are measurable and important, I believe we've gone too far. We favor teaching hard skills because they're easy to evaluate, but as the world changes, this approach becomes increasingly problematic. 
 
-Life is not chess, it's poker. There's uncertainty. The "right choice," if there is one, doesn't guarantee the best outcome.
+Testing students with questions that have correct answers helps build foundational skills and makes teaching at scale possible. To meet growing demands, we've embraced multiple choice questions. I understand the reasoning—multiple choice is efficient, scalable, fair, and allows us to teach thousands of students with limited resources.
 
-I get why we do this. Multiple choice is efficient. It scales. It's fair. We can teach thousands of kids with limited resources.
+But we've created a trap. We simplify to evaluate at scale, then we can only teach what fits those evaluations. The measurement tool shapes what we measure, and what we measure shapes what we teach.
 
-But we've created a trap. We simplify to evaluate at scale. Then we can only teach what fits those evaluations. The measurement tool shapes what we measure, and what we measure shapes what we teach.
+To break it down, we face two key issues:
 
-Even when we try to teach critical thinking, we test it with bubble sheets. A kid who guessed right looks identical to one who reasoned brilliantly. We've optimized for the shadow of learning, not learning itself.
+1. When evaluating hard skills, we rely on multiple choice questions that reward finding the right answer rather than developing reasoning and critical thinking.
+2. We focus solely on hard skills because they fit our current methods of large-scale evaluation.
 
-Teachers know this. They see how students actually think. But one teacher can only deeply evaluate so many students. The system forces them back to standardized tests.
+A student who guesses correctly looks the same as one who reasons brilliantly. Yet with answers now easily accessible to students, the ability to reason well might be more important than the right answer. 
 
-Here's what's changing: the constraint was always human attention. One expert could only guide a handful of students. That's why personalized tutoring worked but couldn't scale.
+Teachers recognize this problem. They want to understand how students think. But one teacher can only deeply evaluate a limited number of students. The system pushes them back to standardized tests.
+
+Here's what's changing: the constraint has always been human attention. One expert could only guide a handful of students. That's why personalized tutoring worked but couldn't scale.
 
 What if that constraint is dissolving?
 
-Imagine a teacher assigns the Remote Work dilemma. Students write their actual analysis. AI helps the teacher see every student's reasoning: who considered trade-offs, who wrestled with uncertainty, who reached for false certainty. Thirty students, each getting the attention that used to be possible for three.
+With AI, teachers could make all math questions open-ended, with students showing their work. AI could help provide partial credit and personalized assistance based on specific mistakes. This technology can help break the multiple choice trap.
 
-Sure, AI evaluation could create new biases. It might reward certain thinking styles over others.
+Once our evaluation becomes more flexible, we can also explore questions that target more than one skill. Imagine a teacher assigning the remote work dilemma. Students write their analysis, and AI helps the teacher see each student's reasoning: who considered trade-offs, who wrestled with uncertainty, who reached for false certainty. Thirty students could each receive the attention that used to be possible for only three.
 
-But here's the difference: those problems are fixable. Multiple choice, by its nature, can't evaluate complex thinking. AI potentially can, even if imperfectly at first.
-
-The real question isn't whether AI can evaluate complex thinking. It's whether we're ready to admit that complex thinking is what we should have been teaching all along.
-
-Most important questions don't have correct answers. Expertise isn't about knowing facts but navigating uncertainty.
-
-The tools to break the cycle might finally be here. Are we brave enough to use them?
+AI can help us improve how we teach today and move beyond our current system's limitations.

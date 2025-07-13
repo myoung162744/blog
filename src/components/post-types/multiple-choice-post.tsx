@@ -87,6 +87,11 @@ export default function MultipleChoicePost({ post, onComplete }: MultipleChoiceP
               boxShadow: '4px 4px 0px rgba(0,0,0,0.1)'
             }}>
               <div className="max-w-none">
+                {/* Title */}
+                <h1 className="text-4xl font-bold text-gray-900 mb-8 border-b-2 border-gray-200 pb-4">
+                  {post.title}
+                </h1>
+
                 {/* Question Recap */}
                 <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-8">
                   <p className="font-mono text-sm mb-3 text-gray-900 font-semibold">{post.question}</p>
