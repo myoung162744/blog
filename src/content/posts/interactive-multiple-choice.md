@@ -43,7 +43,7 @@ To break it down, we face two key issues:
 
 A student who guesses correctly looks the same as one who reasons brilliantly. Yet with answers now easily accessible to students, the ability to reason well might be more important than the right answer. 
 
-Teachers recognize this problem. They want to understand how students think. But one teacher can only deeply evaluate a limited number of students. The system pushes them back to standardized tests.
+Teachers recognize this problem. They want to understand how students think, but one teacher can only deeply evaluate a limited number of students. The system pushes them back to standardized tests.
 
 Here's what's changing: the constraint has always been human attention. One expert could only guide a handful of students. That's why personalized tutoring worked but couldn't scale.
 
@@ -53,4 +53,4 @@ With AI, teachers could make all math questions open-ended, with students showin
 
 Once our evaluation becomes more flexible, we can also explore questions that target more than one skill. Imagine a teacher assigning the remote work dilemma. Students write their analysis, and AI helps the teacher see each student's reasoning: who considered trade-offs, who wrestled with uncertainty, who reached for false certainty. Thirty students could each receive the attention that used to be possible for only three.
 
-AI can help us improve how we teach today and move beyond our current system's limitations.
+AI can help us improve how we teach today and move us beyond our current system's limitations.
