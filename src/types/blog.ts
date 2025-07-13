@@ -1,10 +1,18 @@
 export type InteractivePostType = 'multiple-choice' | 'quiz' | 'poll' | 'interactive-story';
 
+export interface PostMetadata {
+  author: string;
+  date: string;
+  readTime: string;
+  featured?: boolean;
+  tags?: string[];
+}
+
 export interface BaseInteractivePost {
   type: InteractivePostType;
   title: string;
   content: string;
-  metadata: Record<string, any>;
+  metadata: PostMetadata;
 }
 
 export interface MultipleChoicePost extends BaseInteractivePost {
@@ -14,7 +22,7 @@ export interface MultipleChoicePost extends BaseInteractivePost {
   followUpContent: {
     question: string;
     subheading: string;
-    description: string;
+    description?: string;
   };
   mainContent: string;
 }

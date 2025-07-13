@@ -5,7 +5,7 @@ import { BlogPost, MultipleChoicePost } from '@/types/blog';
 
 const CONTENT_DIR = path.join(process.cwd(), 'src/content/posts');
 
-export interface PostMetadata {
+export interface FrontmatterMetadata {
   title: string;
   description: string;
   date: string;
@@ -34,7 +34,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data: frontmatter, content } = matter(fileContent);
     
-    const metadata = frontmatter as PostMetadata;
+    const metadata = frontmatter as FrontmatterMetadata;
     
     // Skip files without a type
     if (!metadata.type) return null;
@@ -53,7 +53,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
   }
 }
 
-function parseMultipleChoicePost(metadata: PostMetadata, content: string): MultipleChoicePost {
+function parseMultipleChoicePost(metadata: FrontmatterMetadata, content: string): MultipleChoicePost {
   const sections = content.split('---');
   
   if (sections.length < 2) {
@@ -80,17 +80,26 @@ function parseMultipleChoicePost(metadata: PostMetadata, content: string): Multi
   
   // Parse follow-up content
   const followUpLines = followUpMatch[1].split('\n').filter(line => line.trim());
-  const followUpContent: any = {};
+  const followUpContent: {
+    question?: string;
+    subheading?: string;
+    description?: string;
+  } = {};
   
   followUpLines.forEach(line => {
-    const questionMatch = line.match(/- \*\*Question\*\*:\s*"(.+)"/);
-    const subheadingMatch = line.match(/- \*\*Subheading\*\*:\s*"(.+)"/);
-    const descriptionMatch = line.match(/- \*\*Description\*\*:\s*"(.+)"/);
+    const questionMatch = line.match(/- \*\*Question\*\*:\s*"([^"]+)"/);
+    const subheadingMatch = line.match(/- \*\*Subheading\*\*:\s*"([^"]+)"/);
+    const descriptionMatch = line.match(/- \*\*Description\*\*:\s*"([^"]+)"/);
     
     if (questionMatch) followUpContent.question = questionMatch[1];
     if (subheadingMatch) followUpContent.subheading = subheadingMatch[1];
     if (descriptionMatch) followUpContent.description = descriptionMatch[1];
   });
+  
+  // Ensure all required properties are present
+  if (!followUpContent.question || !followUpContent.subheading) {
+    throw new Error('Multiple choice post missing required follow-up content properties (question or subheading)');
+  }
   
   // Convert markdown to HTML for main content
   const mainContentHtml = convertMarkdownToHtml(mainContentSection);
@@ -108,7 +117,11 @@ function parseMultipleChoicePost(metadata: PostMetadata, content: string): Multi
     },
     question,
     options,
-    followUpContent,
+    followUpContent: {
+      question: followUpContent.question!,
+      subheading: followUpContent.subheading!,
+      description: followUpContent.description,
+    },
     mainContent: mainContentHtml,
   };
 }
@@ -117,7 +130,7 @@ function convertMarkdownToHtml(markdown: string): string {
   // Simple markdown to HTML converter
   // For production, consider using a proper markdown parser like 'marked' or 'remark'
   
-  let html = markdown
+  const html = markdown
     // Headers
     .replace(/^# (.+)$/gm, '<h1 class="text-3xl font-bold mb-6 text-gray-900">$1</h1>')
     .replace(/^## (.+)$/gm, '<h2 class="text-2xl font-bold mb-4 text-gray-900">$1</h2>')

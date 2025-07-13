@@ -73,7 +73,7 @@ export default function Home() {
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-8">More Posts</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {otherPosts.map((post, index) => (
+              {otherPosts.map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`} className="block group">
                   <article className="bg-white border-2 border-black rounded-lg p-6 h-full transition-all duration-200 hover:shadow-lg group-hover:translate-y-[-2px]" style={{
                     boxShadow: '4px 4px 0px rgba(0,0,0,0.1)'
