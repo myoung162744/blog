@@ -22,7 +22,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <main>
-      <PostFactory post={post} slug={slug} nextSlug={nextSlug} />
+      <PostFactory post={post} nextSlug={nextSlug} />
     </main>
   );
 } 

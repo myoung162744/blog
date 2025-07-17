@@ -7,11 +7,10 @@ import type { MultipleChoicePost } from '@/types/blog';
 interface MultipleChoicePostProps {
   post: MultipleChoicePost;
   onComplete?: () => void;
-  slug?: string;
   nextSlug?: string;
 }
 
-export default function MultipleChoicePost({ post, onComplete, slug, nextSlug }: MultipleChoicePostProps) {
+export default function MultipleChoicePost({ post, onComplete, nextSlug }: MultipleChoicePostProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showQuestions, setShowQuestions] = useState(false);
   const [showFullPost, setShowFullPost] = useState(false);
