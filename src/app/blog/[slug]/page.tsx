@@ -18,7 +18,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const allPosts = getAllPosts();
   const currentIndex = allPosts.findIndex(p => p.slug === slug);
   const nextPost = currentIndex !== -1 && currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
-  const nextSlug = nextPost ? nextPost.slug : null;
+  const nextSlug = nextPost ? nextPost.slug : undefined;
 
   return (
     <main>
