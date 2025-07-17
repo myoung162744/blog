@@ -34,10 +34,9 @@ To prepare kids for the real world, we simplify it. We teach them hard skills th
 
 Testing students with questions that have correct answers helps build foundational skills and makes teaching at scale possible. To meet growing demands, we've embraced multiple choice questions. I understand the reasoning—multiple choice is efficient, scalable, fair, and allows us to teach thousands of students with limited resources.
 
-But we've created a trap. We simplify to evaluate at scale, then we can only teach what fits those evaluations. The measurement tool shapes what we measure, and what we measure shapes what we teach.
+> But we've created a trap. We simplify to evaluate at scale, then we can only teach what fits those evaluations. The measurement tool shapes what we measure, and what we measure shapes what we teach.
 
-To break it down, we face two key issues:
-
+**To break it down, we face two key issues:**
 1. When evaluating hard skills, we rely on multiple choice questions that reward finding the right answer rather than developing reasoning and critical thinking.
 2. We focus solely on hard skills because they fit our current methods of large-scale evaluation.
 
