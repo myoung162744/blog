@@ -1,26 +1,44 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import type { MultipleChoicePost } from '@/types/blog';
 
 interface MultipleChoicePostProps {
   post: MultipleChoicePost;
   onComplete?: () => void;
+  slug?: string;
+  nextSlug?: string;
 }
 
-export default function MultipleChoicePost({ post, onComplete }: MultipleChoicePostProps) {
+export default function MultipleChoicePost({ post, onComplete, slug, nextSlug }: MultipleChoicePostProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showQuestions, setShowQuestions] = useState(false);
   const [showFullPost, setShowFullPost] = useState(false);
+  const router = useRouter();
+
+  // When answer is selected, show follow-up, then auto-redirect or show full post
+  useEffect(() => {
+    if (showQuestions && !showFullPost) {
+      if (nextSlug) {
+        const timeout = setTimeout(() => {
+          router.push(`/blog/${nextSlug}`);
+        }, 1500); // 1.5 seconds
+        return () => clearTimeout(timeout);
+      } else {
+        // No next post, show full post after 1.5s
+        const timeout = setTimeout(() => {
+          setShowFullPost(true);
+          onComplete?.();
+        }, 1500); // 1.5 seconds
+        return () => clearTimeout(timeout);
+      }
+    }
+  }, [showQuestions, showFullPost, nextSlug, router, onComplete]);
 
   const handleAnswerSelect = (answer: number) => {
     setSelectedAnswer(answer);
     setTimeout(() => setShowQuestions(true), 500);
-  };
-
-  const handleContinue = () => {
-    setShowFullPost(true);
-    onComplete?.();
   };
 
   return (
@@ -59,7 +77,7 @@ export default function MultipleChoicePost({ post, onComplete }: MultipleChoiceP
         </div>
 
         {/* Follow-up Questions */}
-        <div className={`transition-all duration-700 transform mt-6 ${showQuestions ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <div className={`transition-all duration-700 transform mt-6 ${showQuestions && !showFullPost ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           {showQuestions && !showFullPost && (
             <div className="bg-white border-2 border-black rounded-lg p-8" style={{
               boxShadow: '4px 4px 0px rgba(0,0,0,0.1)'
@@ -69,13 +87,7 @@ export default function MultipleChoicePost({ post, onComplete }: MultipleChoiceP
                 <p className="text-3xl font-bold text-gray-900">{post.followUpContent.subheading}</p>
                 <p className="text-gray-800 italic font-medium">{post.followUpContent.description}</p>
               </div>
-              
-              <button
-                onClick={handleContinue}
-                className="w-full py-3 px-6 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors duration-200"
-              >
-                Continue Reading →
-              </button>
+              {/* No Continue Reading button */}
             </div>
           )}
         </div>
