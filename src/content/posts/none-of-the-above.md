@@ -1,7 +1,7 @@
 ---
 title: "E. None of the Above"
-description: "An interactive blog post with multiple choice questions that explores how we can better prepare students for real-world decision making."
-date: "2025-07-13"
+description: "We've created an educational trap, favoring multiple-choice questions that reward right answers over reasoning. AI enabling open-ended evaluation at scale could assess both process and answers, breaking free from our measurement constraints."
+date: "2025-07-21"
 author: "Matthew Young"
 readTime: "5 min read"
 type: "multiple-choice"
