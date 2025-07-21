@@ -4,27 +4,17 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
 type PageProps = {
-  params: { slug: string } | Promise<{ slug: string }>
+  params: { slug: string }
   searchParams?: { [key: string]: string | string[] | undefined }
 };
 
-function isPromise<T>(value: T | Promise<T>): value is Promise<T> {
-  return (
-    typeof value === 'object' &&
-    value !== null &&
-    'then' in value &&
-    typeof (value as { then?: unknown }).then === 'function'
-  );
-}
-
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const slugs = getAllPostSlugs();
   return slugs.map(slug => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const resolvedParams = isPromise(params) ? await params : params;
-  const post = getPostBySlug(resolvedParams.slug);
+  const post = getPostBySlug(params.slug);
   if (!post) {
     return {
       title: 'Post Not Found',
@@ -44,8 +34,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function BlogPost({ params }: PageProps) {
-  const resolvedParams = isPromise(params) ? await params : params;
-  const { slug } = resolvedParams;
+  const { slug } = params;
   const post = getPostBySlug(slug);
   if (!post) {
     notFound();
