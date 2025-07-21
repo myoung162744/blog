@@ -9,7 +9,12 @@ type PageProps = {
 };
 
 function isPromise<T>(value: T | Promise<T>): value is Promise<T> {
-  return typeof value === 'object' && value !== null && 'then' in value && typeof (value as any).then === 'function';
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    'then' in value &&
+    typeof (value as { then?: unknown }).then === 'function'
+  );
 }
 
 export async function generateStaticParams() {
