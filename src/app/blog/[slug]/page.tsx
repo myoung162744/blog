@@ -1,10 +1,31 @@
 import PostFactory from '@/components/core/post-factory';
 import { getPostBySlug, getAllPostSlugs, getAllPosts } from '@/lib/content-loader';
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs();
   return slugs.map(slug => ({ slug }));
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const post = getPostBySlug(params.slug);
+  if (!post) {
+    return {
+      title: 'Post Not Found',
+      description: 'This post could not be found.'
+    };
+  }
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: 'article',
+      url: `https://chalkandcode.blog/blog/${post.slug}`,
+    },
+  };
 }
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
