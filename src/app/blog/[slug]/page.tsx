@@ -3,12 +3,17 @@ import { getPostBySlug, getAllPostSlugs, getAllPosts } from '@/lib/content-loade
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
+type PageProps = {
+  params: { slug: string }
+  searchParams?: { [key: string]: string | string[] | undefined }
+};
+
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs();
   return slugs.map(slug => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
   if (!post) {
     return {
@@ -28,8 +33,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function BlogPost(props: { params: { slug: string } }) {
-  const { slug } = props.params;
+export default async function BlogPost({ params }: PageProps) {
+  const { slug } = params;
   const post = getPostBySlug(slug);
   if (!post) {
     notFound();
