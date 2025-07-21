@@ -8,13 +8,9 @@ export function generateStaticParams() {
   return slugs.map(slug => ({ slug }));
 }
 
-// Helper type for inferring params type from generateStaticParams (Next.js 15+)
-type InferGSPRTWorkup<T> = T extends Promise<readonly (infer U)[] | (infer U)[]> ? U : T;
-type InferGSPRT<T extends (...args: unknown[]) => unknown> = {
-  params: Promise<InferGSPRTWorkup<ReturnType<T>>>;
-};
+// Remove InferGSPRT helper and use direct typing for params
 
-export async function generateMetadata({ params }: InferGSPRT<typeof generateStaticParams>): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) {
@@ -35,7 +31,7 @@ export async function generateMetadata({ params }: InferGSPRT<typeof generateSta
   };
 }
 
-export default async function BlogPost({ params }: InferGSPRT<typeof generateStaticParams>) {
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) {
