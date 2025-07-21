@@ -3,11 +3,6 @@ import { getPostBySlug, getAllPostSlugs, getAllPosts } from '@/lib/content-loade
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
-type PageProps = {
-  params: { slug: string }
-  searchParams?: { [key: string]: string | string[] | undefined }
-};
-
 export function generateStaticParams() {
   const slugs = getAllPostSlugs();
   return slugs.map(slug => ({ slug }));
@@ -15,7 +10,7 @@ export function generateStaticParams() {
 
 // Helper type for inferring params type from generateStaticParams (Next.js 15+)
 type InferGSPRTWorkup<T> = T extends Promise<readonly (infer U)[] | (infer U)[]> ? U : T;
-type InferGSPRT<T extends (...args: any) => any> = {
+type InferGSPRT<T extends (...args: unknown[]) => unknown> = {
   params: Promise<InferGSPRTWorkup<ReturnType<T>>>;
 };
 
