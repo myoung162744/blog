@@ -8,14 +8,18 @@ type PageProps = {
   searchParams?: { [key: string]: string | string[] | undefined }
 };
 
+function isPromise<T>(value: T | Promise<T>): value is Promise<T> {
+  return typeof value === 'object' && value !== null && 'then' in value && typeof (value as any).then === 'function';
+}
+
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs();
   return slugs.map(slug => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = typeof (params as any).then === 'function' ? await params : params;
-  const post = getPostBySlug(slug);
+  const resolvedParams = isPromise(params) ? await params : params;
+  const post = getPostBySlug(resolvedParams.slug);
   if (!post) {
     return {
       title: 'Post Not Found',
@@ -35,7 +39,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function BlogPost({ params }: PageProps) {
-  const { slug } = typeof (params as any).then === 'function' ? await params : params;
+  const resolvedParams = isPromise(params) ? await params : params;
+  const { slug } = resolvedParams;
   const post = getPostBySlug(slug);
   if (!post) {
     notFound();
