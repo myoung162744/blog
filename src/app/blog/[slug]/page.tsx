@@ -13,8 +13,15 @@ export function generateStaticParams() {
   return slugs.map(slug => ({ slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const post = getPostBySlug(params.slug);
+// Helper type for inferring params type from generateStaticParams (Next.js 15+)
+type InferGSPRTWorkup<T> = T extends Promise<readonly (infer U)[] | (infer U)[]> ? U : T;
+type InferGSPRT<T extends (...args: any) => any> = {
+  params: Promise<InferGSPRTWorkup<ReturnType<T>>>;
+};
+
+export async function generateMetadata({ params }: InferGSPRT<typeof generateStaticParams>): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) {
     return {
       title: 'Post Not Found',
@@ -33,8 +40,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function BlogPost({ params }: PageProps) {
-  const { slug } = params;
+export default async function BlogPost({ params }: InferGSPRT<typeof generateStaticParams>) {
+  const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) {
     notFound();
