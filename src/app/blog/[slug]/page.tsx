@@ -28,8 +28,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function BlogPost(props: { params: { slug: string } }) {
+  const { slug } = props.params;
   const post = getPostBySlug(slug);
   if (!post) {
     notFound();
