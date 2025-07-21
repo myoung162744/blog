@@ -21,10 +21,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
   return {
     title: post.title,
-    description: post.description,
+    description: post.metadata.description,
     openGraph: {
       title: post.title,
-      description: post.description,
+      description: post.metadata.description,
       type: 'article',
       url: `https://chalkandcode.blog/blog/${post.slug}`,
     },
