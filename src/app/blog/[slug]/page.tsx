@@ -1,32 +1,37 @@
 import PostFactory from '@/components/core/post-factory';
 import { getPostBySlug, getAllPostSlugs, getAllPosts } from '@/lib/content-loader';
 import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   const slugs = getAllPostSlugs();
   return slugs.map(slug => ({ slug }));
 }
 
-// Remove InferGSPRT helper and use direct typing for params
-
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
+  
   if (!post) {
     return {
       title: 'Post Not Found',
-      description: 'This post could not be found.'
     };
   }
+
   return {
-    title: post.title,
+    title: `${post.metadata.title} | Chalk and Code`,
     description: post.metadata.description,
     openGraph: {
-      title: post.title,
+      title: post.metadata.title,
       description: post.metadata.description,
       type: 'article',
-      url: `https://chalkandcode.blog/blog/${post.slug}`,
+      publishedTime: post.metadata.date,
+      authors: [post.metadata.author],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.metadata.title,
+      description: post.metadata.description,
     },
   };
 }
