@@ -19,19 +19,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: `${post.metadata.title} | Chalk and Code`,
-    description: post.metadata.description,
+    title: `${post.title} | Chalk and Code`,
+    description: post.content,
     openGraph: {
-      title: post.metadata.title,
-      description: post.metadata.description,
+      title: post.title,
+      description: post.content,
       type: 'article',
       publishedTime: post.metadata.date,
       authors: [post.metadata.author],
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.metadata.title,
-      description: post.metadata.description,
+      title: post.title,
+      description: post.content,
     },
   };
 }
