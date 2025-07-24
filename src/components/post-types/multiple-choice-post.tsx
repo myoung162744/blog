@@ -45,6 +45,10 @@ export default function MultipleChoicePost({ post, onComplete, nextSlug }: Multi
       <div className="max-w-3xl mx-auto">
         {/* Initial Multiple Choice Question */}
         <div className={`transition-all duration-500 ${showFullPost ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100'}`}>
+          {/* New Header for First Screen */}
+          {!(showQuestions || showFullPost) && (
+            <h1 className="text-3xl font-bold mb-6 text-gray-900 text-center">Before the post, let&apos;s start with a question</h1>
+          )}
           {/* Question Box */}
           <div className="bg-white border-2 border-black rounded-lg p-8 mb-6" style={{
             boxShadow: '4px 4px 0px rgba(0,0,0,0.1)'
