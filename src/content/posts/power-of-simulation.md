@@ -41,8 +41,6 @@ It's comparable to minor league baseball for knowledge work. As remaining jobs d
 
 This same technology that might one day replace us can also enhance our capabilities, particularly in strengthening our relationships and human interactions. 
 
----
-
 ## References
 
 Quality Improvement in Medical Simulation - StatPearls. NCBI Bookshelf. (2023) - Healthcare simulation reducing infections by 74-85%

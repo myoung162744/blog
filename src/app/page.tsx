@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getAllPosts } from '@/lib/content-loader'
+import { getAllPosts } from '@/lib/content-loader-optimized'
 
 export default function Home() {
   const posts = getAllPosts()
@@ -33,9 +33,7 @@ export default function Home() {
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Latest Post</h2>
           <Link href={`/blog/${featuredPost.slug}`} className="block group">
-            <article className="bg-white border-2 border-black rounded-lg p-8 md:p-12 transition-all duration-200 hover:shadow-lg group-hover:translate-y-[-2px]" style={{
-              boxShadow: '4px 4px 0px rgba(0,0,0,0.1)'
-            }}>
+            <article className="bg-white border-2 border-black rounded-lg p-8 md:p-12 card-shadow card-shadow-hover group-hover:shadow-lg">
               <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center space-x-4">
                   <time className="text-sm font-mono text-gray-600 bg-gray-100 px-3 py-1 rounded">
@@ -75,9 +73,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {otherPosts.map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`} className="block group">
-                  <article className="bg-white border-2 border-black rounded-lg p-6 h-full transition-all duration-200 hover:shadow-lg group-hover:translate-y-[-2px]" style={{
-                    boxShadow: '4px 4px 0px rgba(0,0,0,0.1)'
-                  }}>
+                  <article className="bg-white border-2 border-black rounded-lg p-6 h-full card-shadow card-shadow-hover group-hover:shadow-lg">
                     <div className="flex items-center space-x-2 mb-4">
                       <time className="text-xs font-mono text-gray-600 bg-gray-100 px-2 py-1 rounded">
                         {post.metadata.date}
@@ -110,9 +106,7 @@ export default function Home() {
 
         {/* CTA Section */}
         <section className="mt-16 text-center">
-          <div className="bg-white border-2 border-black rounded-lg p-8" style={{
-            boxShadow: '4px 4px 0px rgba(0,0,0,0.1)'
-          }}>
+          <div className="bg-white border-2 border-black rounded-lg p-8 card-shadow">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Want to see more?</h2>
             <p className="text-gray-700 mb-6">
               Explore all blog posts or learn more about interactive learning experiences.
