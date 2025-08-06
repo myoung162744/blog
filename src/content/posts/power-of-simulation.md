@@ -1,9 +1,9 @@
 ---
 title: "The Power of Simulation"
 description: "The combination of large language models and remote work norms has enabled effective workplace simulation, offering a solution to the cold start problem in knowledge work and developing real-world capabilities through hands-on practice."
-date: "2025-07-30"
+date: "2025-08-06"
 author: "Matthew Young"
-readTime: "8 min read"
+readTime: "5 min read"
 type: "text"
 featured: true
 tags: ["workplace", "simulation", "AI", "training", "remote-work"]
