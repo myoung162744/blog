@@ -1,5 +1,5 @@
 import PostFactory from '@/components/core/post-factory';
-import { getPostBySlug, getAllPostSlugs, getAllPosts } from '@/lib/content-loader';
+import { getPostBySlug, getAllPostSlugs, getAllPosts } from '@/lib/content-loader-optimized';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
@@ -15,23 +15,50 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) {
     return {
       title: 'Post Not Found',
+      description: 'The requested blog post could not be found.',
     };
   }
 
+  const url = `https://chalkandcode.com/blog/${slug}`;
+
   return {
-    title: `${post.title} | Chalk and Code`,
+    title: post.title,
     description: post.content,
+    keywords: post.metadata.tags || ["education", "technology", "learning"],
+    authors: [{ name: post.metadata.author }],
     openGraph: {
       title: post.title,
       description: post.content,
       type: 'article',
       publishedTime: post.metadata.date,
       authors: [post.metadata.author],
+      url,
+      siteName: 'Chalk and Code',
+      images: [
+        {
+          url: '/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.content,
+      images: ['/og-image.png'],
+    },
+    alternates: {
+      canonical: url,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
     },
   };
 }

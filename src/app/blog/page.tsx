@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getAllPosts } from '@/lib/content-loader'
+import { getAllPosts } from '@/lib/content-loader-optimized'
 
 export default function BlogIndex() {
   const posts = getAllPosts()
@@ -14,9 +14,7 @@ export default function BlogIndex() {
         ) : (
           <div className="space-y-6">
             {posts.map((post) => (
-              <article key={post.slug} className="bg-white border-2 border-black rounded-lg p-6 hover:shadow-lg transition-all duration-200 hover:translate-y-[-2px]" style={{
-                boxShadow: '4px 4px 0px rgba(0,0,0,0.1)'
-              }}>
+              <article key={post.slug} className="bg-white border-2 border-black rounded-lg p-6 card-shadow card-shadow-hover hover:shadow-lg">
                 <Link href={`/blog/${post.slug}`} className="block">
                   <div className="flex items-center space-x-4 mb-4">
                     <time className="text-sm font-mono text-gray-600 bg-gray-100 px-3 py-1 rounded">

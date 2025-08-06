@@ -46,3 +46,26 @@ body {
 .prose em {
   color: #374151 !important; /* text-gray-700 */
 }
+
+/* Optimized card styles for better performance */
+.card-shadow {
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+  will-change: transform, box-shadow;
+}
+
+.card-shadow-hover {
+  transition: all 200ms ease;
+}
+
+.card-shadow-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0px rgba(0,0,0,0.15);
+}
+
+/* Preload critical animations */
+@media (prefers-reduced-motion: no-preference) {
+  .card-shadow-hover {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+}
