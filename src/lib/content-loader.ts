@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { BlogPost, MultipleChoicePost } from '@/types/blog';
+import { BlogPost, MultipleChoicePost, TextPost } from '@/types/blog';
 
 const CONTENT_DIR = path.join(process.cwd(), 'src/content/posts');
 
@@ -41,6 +41,8 @@ export function getPostBySlug(slug: string): BlogPost | null {
     
     // Parse content based on post type
     switch (metadata.type) {
+      case 'text':
+        return parseTextPost(metadata, content);
       case 'multiple-choice':
         return parseMultipleChoicePost(metadata, content);
       // Add other post types here
@@ -121,6 +123,25 @@ function parseMultipleChoicePost(metadata: FrontmatterMetadata, content: string)
       question: followUpContent.question!,
       subheading: followUpContent.subheading!,
       description: followUpContent.description,
+    },
+    mainContent: mainContentHtml,
+  };
+}
+
+function parseTextPost(metadata: FrontmatterMetadata, content: string): TextPost {
+  // Convert markdown to HTML for the entire content
+  const mainContentHtml = convertMarkdownToHtml(content);
+  
+  return {
+    type: 'text',
+    title: metadata.title,
+    content: metadata.description,
+    metadata: {
+      author: metadata.author,
+      date: metadata.date,
+      readTime: metadata.readTime,
+      featured: metadata.featured,
+      tags: metadata.tags,
     },
     mainContent: mainContentHtml,
   };

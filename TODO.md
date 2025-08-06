@@ -5,6 +5,7 @@
 - [x] update blog post
 - [x] make front page
 - [ ] Add more blog posts to `/src/content/posts/`
+- [ ] Reduce spacing between nav and post
 - [x] Create a proper blog post template/structure
 - [x] Add blog post metadata (author, date, tags, etc.)
 

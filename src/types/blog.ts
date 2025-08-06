@@ -15,6 +15,14 @@ export interface BaseInteractivePost {
   metadata: PostMetadata;
 }
 
+export interface TextPost {
+  type: 'text';
+  title: string;
+  content: string;
+  metadata: PostMetadata;
+  mainContent: string;
+}
+
 export interface MultipleChoicePost extends BaseInteractivePost {
   type: 'multiple-choice';
   question: string;
@@ -55,4 +63,4 @@ export interface InteractiveStoryPost extends BaseInteractivePost {
   }>;
 }
 
-export type BlogPost = MultipleChoicePost | QuizPost | PollPost | InteractiveStoryPost; 
+export type BlogPost = TextPost | MultipleChoicePost | QuizPost | PollPost | InteractiveStoryPost; 

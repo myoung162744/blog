@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import type { MultipleChoicePost } from '@/types/blog';
 
 interface MultipleChoicePostProps {
@@ -43,11 +44,21 @@ export default function MultipleChoicePost({ post, onComplete, nextSlug }: Multi
   return (
     <div className="min-h-screen bg-slate-100 py-12 px-4">
       <div className="max-w-3xl mx-auto">
+        {/* Navigation Header */}
+        <div className="mb-4">
+          <Link href="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors">
+            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span className="text-lg font-semibold">Chalk and Code</span>
+          </Link>
+        </div>
+
         {/* Initial Multiple Choice Question */}
         <div className={`transition-all duration-500 ${showFullPost ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100'}`}>
           {/* New Header for First Screen */}
           {!(showQuestions || showFullPost) && (
-            <h1 className="text-3xl font-bold mb-6 text-gray-900 text-center">Before the post, let&apos;s start with a question</h1>
+            <h1 className="text-3xl font-bold mb-6 text-gray-900 text-left">Before the post, let&apos;s start with a question</h1>
           )}
           {/* Question Box */}
           <div className="bg-white border-2 border-black rounded-lg p-8 mb-6" style={{
