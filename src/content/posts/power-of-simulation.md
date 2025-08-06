@@ -9,7 +9,7 @@ featured: true
 tags: ["workplace", "simulation", "AI", "training", "remote-work"]
 ---
 
-Many assume workplace simulation requires VR headsets and virtual offices, but they're missing the real breakthrough: the combination of large language models (LLMs) and remote work norms has already enabled us to simulate modern workplace experiences effectively.
+Many assume workplace simulation requires VR headsets and virtual offices, but they're missing the real breakthrough: the combination of large language models (LLMs) and remote work norms has already enabled us to simulate most modern workplace experiences.
 
 ## Simulation Efficacy
 
@@ -31,7 +31,7 @@ This goes beyond traditional training, it develops real-world capability through
 
 ## The Cold Start Problem
 
-As AI displaces routine entry-level work, we face what Dario Amodei describes as a potential elimination of "half of all entry-level white-collar jobs." This creates a challenging paradox: you need experience to get hired, but you need a job to gain experience.
+As AI displaces routine entry-level work, we face what Dario Amodei describes as a potential elimination of "half of all entry-level white-collar jobs." This creates a challenging paradox: you need experience to get hired, but you need a job to gain experience. This problem isn't new, but AI has intensified it.
 
 New graduates, despite their degrees, often struggle with workplace realities: challenging unrealistic deadlines, managing office politics, or handling difficult clients who pay the bills. We've normalized this learning curve, but it's inefficient.
 
@@ -39,7 +39,7 @@ Simulation offers a solution. Picture graduates who have already practiced chall
 
 It's comparable to minor league baseball for knowledge work. As remaining jobs demand more sophisticated interpersonal skills, simulation can help people develop these abilities without costly real-world mistakes.
 
-This same technology that might one day replace us can also enhance our capabilities, particularly in strengthening our relationships and human interactions. 
+The same technology that might one day replace us can also enhance our capabilities. Ironically, strengthening our relationships and human interactions may be its greatest opportunity.
 
 ## References
 
